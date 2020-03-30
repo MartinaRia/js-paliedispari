@@ -28,29 +28,54 @@ var betUser = document.getElementById('scelta')
 var numUser = document.getElementById('numero-giocatore');
 var btnNumber = document.getElementById('get-number')
 
+// function print(nomeId, valoreDaStampare){
+// //   var varGetDocById = document.getElementById('nomeId');
+// //   varGetDocById.innerHTML = valoreDaStampare
+// //
+// // }
 
-function getValue(nomeVarBottone, nomeVarInput){
-  nomeVarBottone.addEventListener('click',
-    function prova() {
-      valore = nomeVarInput.value;
-
-      return valore
-    }
-  )
-  return prova()
-}
-
-//ottieni valore scelta
-getValue(btnNumber, numUser)
-console.log(getValue(btnNumber, numUser));
+var numUserValue
+var betUserValue
 
 //metodo precedente
 btnNumber.addEventListener('click',
   function() {
-    numUserValue = numUser.value;
-    betUserValue = betUser.value;
-    console.log(betUserValue);
+    var numUserValue = numUser.value;
+    var betUserValue = betUser.value;
     console.log(numUserValue);
+    console.log(betUserValue);
+
+
+    //stampa scelta
+    var displayScelta = document.getElementById('display-scelta');
+    displayScelta.innerHTML = betUserValue;
+
+    var displayNumScelto = document.getElementById('display-numero');
+    displayNumScelto.innerHTML = numUserValue;
+
+    //scelta computer
+    var numComputer = Math.floor(Math.random() * 5) + 1;
+    document.getElementById('scelta-computer').innerHTML = numComputer
+    console.log(numComputer);
+
+    //Sommiamo
+    var somma = parseInt(numComputer) + parseInt(numUserValue);
+    console.log(somma);
+    var risultato
+
+    //calcola chi ha vinto
+    if (somma%2 === 0) {
+      risultato = "Pari"
+    } else {
+      risultato = "Dispari"
+    }
+
+    if (risultato == betUserValue) {
+      console.log("hai vinto");
+    } else {
+      console.log("hai perso");
+    }
+
 
   }
 )

@@ -12,14 +12,19 @@
 
   <body>
     <select id="scelta" name="">
-      <option value="0">Pari</option>
-      <option value="1">Dispari</option>
+      <option value="Pari">Pari</option>
+      <option value="Dispari">Dispari</option>
     </select>
     <input id="numero-giocatore" type="number" name="" value="">
     <button id="get-number" type="button" name="button">Invia</button>
 
-    <script type="text/javascript" src="master.js">
+    <p>Hai scommesso su: <span id="display-scelta"></span></p>
+    <p>Il tuo numero era: <span id="display-numero"></span></p>
 
-    </script>
+    <p>Il computer ha scelto: <span id="scelta-computer"></span></p>
+
+    <p id="risultato"></p>
+
+    <script type="text/javascript" src="master.js">  </script>
   </body>
 </html>
