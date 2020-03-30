@@ -24,56 +24,78 @@ gioco pariOdispari, i 2 giocatori saranno sempre il PC (quindi non numero inseri
 // Generiamo un numero random (sempre da 1 a 5) per il computer.
 //  Sommiamo i due numeri e dichiariamo chi ha vinto.
 
+//VARIABILI ------------------------------------------------
+
+//variabili input -------------------
 var betUser = document.getElementById('scelta')
 var numUser = document.getElementById('numero-giocatore');
 var btnNumber = document.getElementById('get-number')
 
-// function print(nomeId, valoreDaStampare){
-// //   var varGetDocById = document.getElementById('nomeId');
-// //   varGetDocById.innerHTML = valoreDaStampare
-// //
-// // }
+//variabili funzioni
+var numUserValue, betUserValue; //pickValues()
+var displayScelta, displayNumScelto; //displayUserChoice()
+var numComputer; //computerChoice()
+var somma //sum()
+var risultato //winningCalculations()
+var printRisultato = document.getElementById('risultato') //verdetto
 
-var numUserValue
-var betUserValue
-
-//metodo precedente
+//EVENTO AL CLICK INVIA -------------------------------------
 btnNumber.addEventListener('click',
   function() {
-    var numUserValue = numUser.value;
-    var betUserValue = betUser.value;
-    console.log(numUserValue);
-    console.log(betUserValue);
+
+    pickValues();
+
+    displayUserChoice();
+
+    computerChoice();
+
+    sum();
+
+    winningCalculations();
 
 
-    //stampa scelta
-    var displayScelta = document.getElementById('display-scelta');
-    displayScelta.innerHTML = betUserValue;
+    ///funzioni-----------------------------------------
 
-    var displayNumScelto = document.getElementById('display-numero');
-    displayNumScelto.innerHTML = numUserValue;
-
-    //scelta computer
-    var numComputer = Math.floor(Math.random() * 5) + 1;
-    document.getElementById('scelta-computer').innerHTML = numComputer
-    console.log(numComputer);
-
-    //Sommiamo
-    var somma = parseInt(numComputer) + parseInt(numUserValue);
-    console.log(somma);
-    var risultato
-
-    //calcola chi ha vinto
-    if (somma%2 === 0) {
-      risultato = "Pari"
-    } else {
-      risultato = "Dispari"
+    //prendi valori
+    function pickValues(){
+      numUserValue = numUser.value;
+      betUserValue = betUser.value;
     }
 
-    if (risultato == betUserValue) {
-      console.log("hai vinto");
-    } else {
-      console.log("hai perso");
+    //stampa scelta
+    function displayUserChoice(){
+      displayScelta = document.getElementById('display-scelta');
+      displayScelta.innerHTML = betUserValue;
+
+      displayNumScelto = document.getElementById('display-numero');
+      displayNumScelto.innerHTML = numUserValue;
+    }
+
+    //scelta computer
+    function computerChoice(){
+      numComputer = Math.floor(Math.random() * 5) + 1;
+      document.getElementById('scelta-computer').innerHTML = numComputer
+    }
+
+    //Somma
+    function sum(){
+      somma = parseInt(numComputer) + parseInt(numUserValue);
+      console.log(somma);
+    }
+
+    //calcola chi ha vinto
+    function winningCalculations(){
+      if (somma%2 === 0) {
+        risultato = "Pari"
+      } else {
+        risultato = "Dispari"
+      }
+      //verdetto
+      if (risultato == betUserValue) {
+        printRisultato.innerHTML = "HAI VINTO"
+      } else {
+        printRisultato.innerHTML = "HAI PERSO"
+      }
     }
 
 
