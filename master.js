@@ -31,12 +31,13 @@ var btnNumber = document.getElementById('get-number')
 
 function getValue(nomeVarBottone, nomeVarInput){
   nomeVarBottone.addEventListener('click',
-    function() {
+    function prova() {
       valore = nomeVarInput.value;
 
       return valore
     }
   )
+  return prova()
 }
 
 //ottieni valore scelta
